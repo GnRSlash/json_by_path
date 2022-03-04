@@ -1,0 +1,15 @@
+name: json_by_path
+description: Get and Set Json Maps using path relative keys
+version: 0.0.1-beta
+# homepage: https://www.example.com
+# repository: 
+environment:
+  sdk: '>=2.16.0-134.5.beta <3.0.0'
+
+# dependencies:
+#   path: ^1.8.0
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+dependencies:
+  
