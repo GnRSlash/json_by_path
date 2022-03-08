@@ -1,10 +1,14 @@
 name: json_by_path
-description: Get and Set Json Maps using path relative keys
-version: 0.0.1-beta
+description: Get, Set, create, delete Json Maps using path relative keys. No
+  dependencies, as simple as possible!
+version: 0.0.2-beta
+
 # homepage: https://www.example.com
-# repository: 
+repository: https://github.com/GnRSlash/json_by_path
+issue_tracker: https://github.com/GnRSlash/json_by_path/issues
+
 environment:
-  sdk: '>=2.16.0-134.5.beta <3.0.0'
+  sdk: '>=2.15.0-134.5.beta <3.0.0'
 
 # dependencies:
 #   path: ^1.8.0

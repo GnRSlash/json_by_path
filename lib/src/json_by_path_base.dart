@@ -6,7 +6,10 @@ class JsonByPath {
 
   /// get value from an existing key by path
   /// returns null if some key does not exists
-  T? getValue<T>(Map<String, dynamic> target, String keyPath) {
+  T? getValue<T>(Map<String, dynamic> target, String? keyPath, [T? defValue]) {
+    if (keyPath == null || keyPath.isEmpty) {
+      return target as T;
+    }
     List<String> keys = _split(keyPath);
 
     for (var i = 0; i < keys.length; i++) {
@@ -21,13 +24,13 @@ class JsonByPath {
           return target[key] as T;
         } on Exception catch (e) {
           print(e);
-          return null;
+          return defValue;
         }
       }
       target = target[key];
     }
 
-    return null;
+    return defValue;
   }
 
   Map<String, dynamic> delete(Map<String, dynamic> target, String keyPath) {

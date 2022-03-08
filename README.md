@@ -1,39 +1,64 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# A way to get and set json Map values using key paths!
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+> NOTE: A valid Map<String, dynamic> can be obtained using json encode/decode functions. This package will not work properly if your Map variable was initialized using Map Literals
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Now you can read and write your json files without converting them to a model mapped version. Just use the key path to go directly where you want and **get**, **set**, **delete** or **create** keys and values!
+
+# Installing
+
+Add `JsonByPath` to your pubspec.yaml file:
+
+```yaml
+dependencies:
+  json_by_path:
+```
+
+Import `JsonByPath` in files that it will be used:
+
+```dart
+import 'package:json_by_path/json_by_path.dart';
+```
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Just create an instance of `JsonByPath` and start working:
+```dart
+    JsonByPath jbp = JsonByPath();
+    String v = jbp.getValue(target, 'config.tcp.url');
+    int i = jbp.getValue(target, 'config.tcp.port');
+    jbp.setValue(target)
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+import 'dart:convert';
+// just to use as an example, this is Map Literals initialization
+Map<String, dynamic> target = {
+    'config': {
+        'tcp': {
+            'url': 'http://localhost',
+            'port': 8083
+        }
+    }
+};
+
+// this package does not work with Map Literals
+// convert your map to json string and to Map again
+// (if this is the case)
+target = json.decode(json.encode(target));
+
+JsonByPath jbp = JsonByPath();
+
+print(jbp.getValue(target, 'config.tcp.url'));
+jbp.setValue(target, 'config.tcp.doLog', true);
+print(target);
+
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+**Show some ❤️ and star the repo to support the project**
+

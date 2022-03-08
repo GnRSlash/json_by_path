@@ -73,5 +73,9 @@ void main() {
       expect(jbp.setValue(_json, 'key 6.key 6_1.key 6_1_1', 10), isNot(origin));
       expect(jbp.getValue(_json, 'key 6.key 6_1.key 6_1_1'), equals(10));
     });
+
+    test('getting default value', () {
+      expect(jbp.getValue(_json, 'key 99', <String>[]), equals(<String>[]));
+    });
   });
 }
